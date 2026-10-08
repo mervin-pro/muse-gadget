@@ -516,6 +516,12 @@ board's overlays, in order:
 | VN ESP32-S3 1.83-inch NV3023 | `esp32s3` | [`devices/sdkconfig.muse`](sdkconfig.muse), [`devices/sdkconfig.muse-vn-s3-183`](sdkconfig.muse-vn-s3-183) | `tools/muse/board.sh build vn183` |
 | FoloToy AI Passport | `esp32c3` | [`devices/sdkconfig.muse`](sdkconfig.muse), [`devices/sdkconfig.muse-ai-passport`](sdkconfig.muse-ai-passport) | `tools/muse/board.sh build ai-passport` |
 
+Boards can also run an optional Matter controller, which adds Matter devices on
+the network and controls them through `matter.*` commands. It loads more
+overlays after the board's, and a board whose flash layout they don't cover
+needs its partition table changed: see
+[Matter devices](../AGENTS.md#matter-devices) in `esp32/AGENTS.md`.
+
 `tools/board.sh BOARD [build|flash|monitor|flash-monitor] [PORT]` builds each
 board in its own `build-<board>` directory. For the boards with the full UI, run `idf.py`
 with the target and overlays from the table:
